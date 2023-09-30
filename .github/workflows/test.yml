@@ -89,10 +89,7 @@ jobs:
         cd openwrt
         [ $REPO_DEPTH -gt 1 ] && git reset --hard HEAD~$((REPO_DEPTH - 1))
         wget https://raw.githubusercontent.com/DuyOlaHaxx/DIR-842/main/patches/0001-Support-MiWifi-R3.patch
-        wget https://raw.githubusercontent.com/DuyOlaHaxx/DIR-842/main/patches/0002-Enable-Wifi-by-default.patch
-        git apply --check 9cec59ca38a3600f175bd12e0620a1c7306aa813.patch
-        sed -i 's/842/840/g' 3e8a713bc4f623afba5afc1f6e323251ad395690.patch
-        git apply --check 3e8a713bc4f623afba5afc1f6e323251ad395690.patch
+        git apply --check 0001-Support-MiWifi-R3.patch
         sed -i 's|\(.*\)gt 0\(.*\)"WPA-PSK-SHA256"|\1gt 1\2"WPA-PSK-SHA256"|' package/network/services/hostapd/files/hostapd.sh
         [ -d $PATCHES_PATH ] && for FILE in $(ls $PATCHES_PATH | grep .patch); do git apply --check $PATCHES_PATH/$FILE; git apply $PATCHES_PATH/$FILE; done
         git status -s

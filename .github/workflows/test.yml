@@ -88,8 +88,8 @@ jobs:
         [ -d $PATCHES_PATH ] && mv $PATCHES_PATH openwrt/$PATCHES_PATH
         cd openwrt
         [ $REPO_DEPTH -gt 1 ] && git reset --hard HEAD~$((REPO_DEPTH - 1))
-        wget https://github.com/openwrt/openwrt/commit/9cec59ca38a3600f175bd12e0620a1c7306aa813.patch
-        wget https://github.com/openwrt/openwrt/commit/3e8a713bc4f623afba5afc1f6e323251ad395690.patch
+        wget https://raw.githubusercontent.com/DuyOlaHaxx/DIR-842/main/patches/0001-Support-MiWifi-R3.patch
+        wget https://raw.githubusercontent.com/DuyOlaHaxx/DIR-842/main/patches/0002-Enable-Wifi-by-default.patch
         git apply --check 9cec59ca38a3600f175bd12e0620a1c7306aa813.patch
         sed -i 's/842/840/g' 3e8a713bc4f623afba5afc1f6e323251ad395690.patch
         git apply --check 3e8a713bc4f623afba5afc1f6e323251ad395690.patch
